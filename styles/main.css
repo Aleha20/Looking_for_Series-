@@ -1,9 +1,26 @@
 .main {
-  background-color: yellow;
+  background-color: pink;
 }
-.js-series__list {
+.input__btn {
+  width: 200px;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+.btn_search {
+  width: 100px;
+  padding: 5px;
+}
+.full__series {
   border: 2px solid blueviolet;
 }
-.js-favorite__series {
+.favorite__show {
   border: 2px solid red;
+}
+.img__color {
+  background-color: lightgrey;
+  padding: 20px;
+}
+.img__clicked {
+  background-color: red;
+  padding: 20px;
 }

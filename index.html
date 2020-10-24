@@ -17,7 +17,7 @@
       <form action="/signup" method="POST">
         <label for="search"></label>
         <input
-          class="js-input"
+          class="js-input input__btn"
           type="text"
           name="find series"
           placeholder="Elige serie"
@@ -26,24 +26,25 @@
       
         />
       </form>
-      <button class="js-btn" type="submit">
+      <button class="js-btn btn_search" type="submit">
         Search <span><i class="fab fa-searchengin"></i></span>
       
       </button>
     </section>
     <section class="paint__series">
-        <div class="js-series__list"> 
+        <div class="main__list"> 
           <h3>Resultados de tu búsqueda</h3>
 
-            <ul>
-                <li></li>
+            <ul class="js__full-series">
+                
+                
             </ul>
         </div>
-        <div class="js-favorite__series">
+        <div class="favorite__list">
           <h3>Y tus favoritas por ahora son:</h3>
 
             <ul>
-                <li></li>
+                <li class="js-favorite__series favorite__show"></li>
             </ul>
         </div>
     </section>
