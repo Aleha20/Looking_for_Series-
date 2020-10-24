@@ -14,7 +14,7 @@
     <main class="main">
       <h1>Buscador de series</h1>
       <section></section>
-      <form action="">
+      <form action="/signup" method="POST">
         <label for="search"></label>
         <input
           class="js-input"
@@ -23,6 +23,7 @@
           placeholder="Elige serie"
           id="search"
           value=""
+      
         />
       </form>
       <button class="js-btn" type="submit">
@@ -31,14 +32,18 @@
       </button>
     </section>
     <section class="paint__series">
-        <div class="js-series__list">
+        <div class="js-series__list"> 
+          <h3>Resultados de tu búsqueda</h3>
+
             <ul>
-                <li>Lita de películas a pintar</li>
+                <li></li>
             </ul>
         </div>
         <div class="js-favorite__series">
+          <h3>Y tus favoritas por ahora son:</h3>
+
             <ul>
-                <li>Lita de películas favoritas</li>
+                <li></li>
             </ul>
         </div>
     </section>

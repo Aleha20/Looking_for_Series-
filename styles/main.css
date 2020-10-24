@@ -1,3 +1,9 @@
 .main {
-  background-color: salmon;
+  background-color: yellow;
+}
+.js-series__list {
+  border: 2px solid blueviolet;
+}
+.js-favorite__series {
+  border: 2px solid red;
 }
