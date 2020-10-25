@@ -1,5 +1,11 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 .main {
-  background-color: pink;
+  background-color: lightgoldenrodyellow;
+  width: 100%;
 }
 .input__btn {
   width: 200px;
@@ -9,18 +15,29 @@
 .btn_search {
   width: 100px;
   padding: 5px;
+  background-color: rgb(235, 155, 195);
+  text-decoration: none;
+  outline: none;
+  border-radius: 10px;
 }
-.full__series {
-  border: 2px solid blueviolet;
+
+.main__list {
+  width: 50px;
 }
-.favorite__show {
-  border: 2px solid red;
+
+.css__full-series {
+  background-color: rgb(255, 0, 221);
+  padding: 0;
 }
+
 .img__color {
+  width: 100px;
+  height: 150px;
   background-color: lightgrey;
   padding: 20px;
+  border: 2px solid red;
 }
-.img__clicked {
+/* .img__clicked {
   background-color: red;
   padding: 20px;
-}
+} */
