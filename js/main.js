@@ -17,69 +17,56 @@ function getApiSeries() {
     .then(function (data) {
       series = data;
       paintSeriesImage();
+      addListenerFavorites();
+
       setLocalStorage();
       getLocalStorage();
     });
 }
+
+//añadir un id único a cada li para eso utilizo la i del for, para poder sustituir el forOf por el ForComún, y q funcione
+//añado la id q me he creado en mi variable de serie, pero debo añadir mi S porq ahora trabajo con el forComún (todo mi array);
+
 function paintSeriesImage() {
   serieSearched.innerHTML = '';
   let paintHTML = ' ';
-  //   debugger;
-
   for (const serie of series) {
-    console.log('entra por aqui');
     if (serie.show.image !== null) {
-      console.log('No soy dexter');
-      paintHTML += `<li class="js-series__list full__series"><span>${serie.show.name}</span>`;
+      paintHTML += `<li class="js-series__list full__series id="talvez"><span>${serie.show.name}</span>`;
       paintHTML += `<img class="img__color" src="${serie.show.image.medium}"/>`;
       paintHTML += `</li>`;
     } else {
-      paintHTML += `<li class="js-series__list"><span>${serie.show.name}</span>`;
+      paintHTML += `<li class="js-series__list id="talvez><span>${serie.show.name}</span>`;
       paintHTML += `<img class="img__color" src="https://via.placeholder.com/210x295/ffffff/666666/?
         text=TV"/>`;
       paintHTML += `</li>`;
-      console.log('soy dexter');
     }
   }
   serieSearched.innerHTML = serieSearched.innerHTML + paintHTML;
-  addListener();
 }
 
-button.addEventListener('click', getApiSeries);
-let favoriteShow = [];
+//para hacer el evento y usar el elemento clicado es currentTarget, apesar del currentTarget necesito darle un id identificador unico
+//porq sino me trae todos los <li>, id puedo traer el li para asignarle algo unico, valor dinámico q se agregue cada vez q se agregue un li
 
-function favoriteSerie(ev) {
-  console.log('entro y no hagooo nada');
+// let addFavoritesChosen = [];
 
-  let clicked = ev.currentTarget;
-
-  if (clicked === true) {
-    eachSerie.classlist.add('img__clicked');
-  } else {
-    eachSerie.classlist.add('img__color');
-  }
-  //   console.log(favoriteShow);
-  //   eachSerie.push(favoriteShow);
-
-  //   //   let favoriteShow = ev.currentTarget.id;
-  //   let favoriteShow = series[i];
-  //   if (favoriteSerieHTML === clicked) {
-  //     favoriteSerieHTML = true;
-  //   } else {
-  //     favoriteSerieHTML = false;
-  //   }
+function favoriteTv(ev) {
+  let chosen = ev.currentTarget.id;
+  //   chosen.classList.add('img__clicked');
+  console.log('soy el elegido', chosen);
 }
-// favoriteSerie();
 
-function addListener() {
-  //convierto en una lista clicable y
-  let clickedImage = document.querySelectorAll('.js-series__list');
+//convierto en una lista clicable y este for va a recoger todos mis li donde cada <li> es una serie y escucho el evento sobre esa unidad
 
-  for (const eachSerie of clickedImage) {
-    eachSerie.addEventListener('click', favoriteSerie);
-    console.log('Estoy añadiendo el evento');
+function addListenerFavorites() {
+  const favoriteShows = document.querySelectorAll('.js-series__list');
+  for (const favoriteShow of favoriteShows) {
+    favoriteShow.addEventListener('click', favoriteTv);
   }
 }
+//para hacer mi array nuevo y guardar
+//los elementos q vienen dados apartir de una respuesta del servidor
+//los tenemos q guardar en el array despues de que la R/ del servidor haya ocurrido
 
 function setLocalStorage() {
   const jsonData = JSON.stringify(series);
@@ -92,3 +79,4 @@ function getLocalStorage() {
   const localDataA = localStorage.getItem('typeData2');
   const localDataB = JSON.parse(localDataA);
 }
+button.addEventListener('click', getApiSeries);
