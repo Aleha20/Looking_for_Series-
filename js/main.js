@@ -24,12 +24,11 @@ function getApiSeries() {
 }
 
 //añadir un id único a cada li para eso utilizo la i del for, para poder sustituir el forOf por el ForComún, y q funcione
-//añado la id q me he creado en mi variable de serie, pero debo añadir mi S porq ahora trabajo con el forComún (todo mi array);
+//añado el id q me he creado en mi variable de serie, pero debo añadir mi S porq ahora trabajo con el forComún (todo mi array);
 
 function paintSeriesImage() {
   serieSearched.innerHTML = '';
   let paintHTML = ' ';
-  // for (const serie of series) {
   for (let i = 0; i < series.length; i++) {
     if (series[i].show.image !== null) {
       paintHTML += `<li class="js-series__list full__series" id="${series[i].show.id}"><span>${series[i].show.name}</span>`;
@@ -45,14 +44,15 @@ function paintSeriesImage() {
 
   serieSearched.innerHTML = serieSearched.innerHTML + paintHTML;
 }
-//para hacer el evento y usar el elemento clicado es currentTarget, apesar del currentTarget necesito darle un id identificador unico
-//porq sino me trae todos los <li>, id puedo traer el li para asignarle algo unico, valor dinámico q se agregue cada vez q se agregue un li
+//para hacer el evento y usar el elemento clicado es currentTarget, apesar del currentTarget necesito darle un id identificador único
+//q sea dinámico q se agregue cada vez q se agregue un <li> porq sino me trae todos los <li>
+// debo declarar la variable chosen fuera para poder utilizarla en la función de pintar mis favoritos
 
 let addFavoritesChosen = [];
 let chosen;
 function favoriteTv(ev) {
   console.log(ev.currentTarget);
-  chosen = parseInt(ev.currentTarget.id); //verificar q l q he clicado se encuentra si esta lo saco y sino meto con el push
+  chosen = parseInt(ev.currentTarget.id); //verificar q lo q he clicado se encuentra, si esta lo saco y sino meto con el push
   const favoriteClicked = addFavoritesChosen.indexOf(chosen);
   const isFavoriteAlready = favoriteClicked !== -1;
   if (isFavoriteAlready === false) {
@@ -60,13 +60,12 @@ function favoriteTv(ev) {
   } else {
     addFavoritesChosen.splice(favoriteClicked, 1); //sino pongo el 1 me borran todos.
   }
-  console.log('estoy pintando esto', addFavoritesChosen);
   paintFavoriteSeries();
   addListenerFavorites();
   //   addFavoritesChosen, en consola me muestra que clicked/unclicked
 }
 
-//convierto en una lista clicable y este for va a recoger todos mis li donde cada <li> es una serie y escucho el evento sobre esa unidad
+//convierto mi array en una lista clicable y este for va a recoger todos mis <li> (cada serie) y escucho el evento sobre esa unidad
 
 function addListenerFavorites() {
   const favoriteShows = document.querySelectorAll('.js-series__list');
@@ -91,8 +90,7 @@ function paintFavoriteSeries() {
 
   favoriteSeries.innerHTML = favoriteSeries.innerHTML + paintHTML;
 }
-//para hacer mi array nuevo y guardar
-//los elementos q vienen dados apartir de una respuesta del servidor
+//para hacer mi array nuevo y guardar los elementos q vienen dados apartir de una respuesta del servidor
 //los tenemos q guardar en el array despues de que la R/ del servidor haya ocurrido
 
 function setLocalStorage() {
