@@ -18,7 +18,6 @@ function getApiSeries() {
       series = data;
       paintSeriesImage();
       addListenerFavorites();
-
       setLocalStorage();
       getLocalStorage();
     });
@@ -46,18 +45,25 @@ function paintSeriesImage() {
 
   serieSearched.innerHTML = serieSearched.innerHTML + paintHTML;
 }
-
 //para hacer el evento y usar el elemento clicado es currentTarget, apesar del currentTarget necesito darle un id identificador unico
 //porq sino me trae todos los <li>, id puedo traer el li para asignarle algo unico, valor dinámico q se agregue cada vez q se agregue un li
 
 let addFavoritesChosen = [];
-
+let chosen;
 function favoriteTv(ev) {
-  let chosen = parseInt(ev.currentTarget.id); //verificar q l q he clicado se encuentra si esta lo saco y sino meto con el push
-  addFavoritesChosen.push(chosen);
-  //   chosen.classList.add('img__clicked');
-
-  console.log('soy el elegido', addFavoritesChosen);
+  console.log(ev.currentTarget);
+  chosen = parseInt(ev.currentTarget.id); //verificar q l q he clicado se encuentra si esta lo saco y sino meto con el push
+  const favoriteClicked = addFavoritesChosen.indexOf(chosen);
+  const isFavoriteAlready = favoriteClicked !== -1;
+  if (isFavoriteAlready === false) {
+    addFavoritesChosen.push(ev.currentTarget.innerHTML);
+  } else {
+    addFavoritesChosen.splice(favoriteClicked, 1); //sino pongo el 1 me borran todos.
+  }
+  console.log('estoy pintando esto', addFavoritesChosen);
+  paintFavoriteSeries();
+  addListenerFavorites();
+  //   addFavoritesChosen, en consola me muestra que clicked/unclicked
 }
 
 //convierto en una lista clicable y este for va a recoger todos mis li donde cada <li> es una serie y escucho el evento sobre esa unidad
@@ -67,6 +73,23 @@ function addListenerFavorites() {
   for (const favoriteShow of favoriteShows) {
     favoriteShow.addEventListener('click', favoriteTv);
   }
+}
+function paintFavoriteSeries() {
+  favoriteSeries.innerHTML = '';
+  let paintHTML = ' ';
+  for (let i = 0; i < addFavoritesChosen.length; i++) {
+    if (addFavoritesChosen[i] !== null) {
+      paintHTML += `<li class="js-series__list full__series" id="${chosen}"><span>${addFavoritesChosen[i]}</span>`;
+      paintHTML += `</li>`;
+    } else {
+      paintHTML += `<li class="js-series__list" id="${chosen}"><span>${addFavoritesChosen[i]}</span>`;
+      paintHTML += `<img class="img__color" src="https://via.placeholder.com/210x295/ffffff/666666/?
+        text=TV"/>`;
+      paintHTML += `</li>`;
+    }
+  }
+
+  favoriteSeries.innerHTML = favoriteSeries.innerHTML + paintHTML;
 }
 //para hacer mi array nuevo y guardar
 //los elementos q vienen dados apartir de una respuesta del servidor
