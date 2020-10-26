@@ -46,8 +46,8 @@ li {
   height: 150px;
   margin-top: 10px;
   background-color: lightgrey;
-  padding: 20px;
-  border: 2px solid red;
+  padding: 10px;
+  border: 1px solid red;
 }
 .img__clicked {
   background-color: blue;

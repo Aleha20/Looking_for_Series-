@@ -57,8 +57,10 @@ function favoriteTv(ev) {
   const isFavoriteAlready = favoriteClicked !== -1;
   if (isFavoriteAlready === false) {
     addFavoritesChosen.push(ev.currentTarget.innerHTML);
+    console.log('entro por aqui y pinto el q ya esté');
   } else {
     addFavoritesChosen.splice(favoriteClicked, 1); //sino pongo el 1 me borran todos.
+    console.log('entro por aqui y borro el q ya esté');
   }
   paintFavoriteSeries();
   addListenerFavorites();

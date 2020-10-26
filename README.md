@@ -1,4 +1,4 @@
-# Buscador de Series!!!!
+# Buscador de Series!!!
 
 ### Evaluación final de Alejandra Calderón Sánchez
 
@@ -14,8 +14,13 @@
 #### Crear funciones:
 
 -Pintar los datos recibidos apartir de la búsqueda en la web.
+
 -Escuchar los datos elegidos / favoritos desde esa búsqueda.
+
 -Pintar los datos favoritos.
+
 -Almacenamiento Local
+
 -Borrar los favoritos elegidos en un principio
+
 -Optimizar Maquetación
