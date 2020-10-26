@@ -2,10 +2,10 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-.main {
-  padding: 0;
   background-color: #ff4800;
+}
+.titles {
+  margin-left: 20px;
 }
 .input__btn {
   width: 200px;

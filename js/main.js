@@ -30,30 +30,34 @@ function getApiSeries() {
 function paintSeriesImage() {
   serieSearched.innerHTML = '';
   let paintHTML = ' ';
-  for (const serie of series) {
-    if (serie.show.image !== null) {
-      paintHTML += `<li class="js-series__list full__series id="talvez"><span>${serie.show.name}</span>`;
-      paintHTML += `<img class="img__color" src="${serie.show.image.medium}"/>`;
+  // for (const serie of series) {
+  for (let i = 0; i < series.length; i++) {
+    if (series[i].show.image !== null) {
+      paintHTML += `<li class="js-series__list full__series" id="${series[i].show.id}"><span>${series[i].show.name}</span>`;
+      paintHTML += `<img class="img__color" src="${series[i].show.image.medium}"/>`;
       paintHTML += `</li>`;
     } else {
-      paintHTML += `<li class="js-series__list id="talvez><span>${serie.show.name}</span>`;
+      paintHTML += `<li class="js-series__list" id="${series[i].show.id}"><span>${series[i].show.name}</span>`;
       paintHTML += `<img class="img__color" src="https://via.placeholder.com/210x295/ffffff/666666/?
         text=TV"/>`;
       paintHTML += `</li>`;
     }
   }
+
   serieSearched.innerHTML = serieSearched.innerHTML + paintHTML;
 }
 
 //para hacer el evento y usar el elemento clicado es currentTarget, apesar del currentTarget necesito darle un id identificador unico
 //porq sino me trae todos los <li>, id puedo traer el li para asignarle algo unico, valor dinámico q se agregue cada vez q se agregue un li
 
-// let addFavoritesChosen = [];
+let addFavoritesChosen = [];
 
 function favoriteTv(ev) {
-  let chosen = ev.currentTarget.id;
+  let chosen = parseInt(ev.currentTarget.id); //verificar q l q he clicado se encuentra si esta lo saco y sino meto con el push
+  addFavoritesChosen.push(chosen);
   //   chosen.classList.add('img__clicked');
-  console.log('soy el elegido', chosen);
+
+  console.log('soy el elegido', addFavoritesChosen);
 }
 
 //convierto en una lista clicable y este for va a recoger todos mis li donde cada <li> es una serie y escucho el evento sobre esa unidad

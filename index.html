@@ -12,40 +12,31 @@
   </head>
   <body>
     <main class="main">
-      <h1>Encuentra tu serie</h1>
-      <section></section>
-      <form action="/signup" method="POST">
-        <label for="search"></label>
-        <input
-          class="js-input input__btn"
-          type="text"
-          name="find series"
-          placeholder="Elige serie"
-          id="search"
-          value=""
-      
-        />
-      </form>
-      <button class="js-btn btn_search" type="submit">
-        Search <span><i class="fab fa-searchengin"></i></span>
-      
-      </button>
-    </section>
-    <section class="paint__series">
-        <div class="container"> 
-        
-          <h3>Y tus favoritas por ahora son:</h3>
-
-            <ul>
-            </ul>
-            <h3>Resultados de tu búsqueda</h3>
-            <ul class="js__full-series css__full-series">
-                
-                
-            </ul>
+      <section>
+        <h1 class="titles">Encuentra tu serie</h1>
+        <form action="/signup" method="POST">
+          <label for="search"></label>
+          <input
+            class="js-input input__btn"
+            type="text"
+            name="find series"
+            placeholder="Elige serie"
+            id="search"
+            value=""
+          />
+        </form>
+        <button class="js-btn btn_search" type="submit">
+          Search <span><i class="fab fa-searchengin"></i></span>
+        </button>
+      </section>
+      <section class="paint__series">
+        <div class="container">
+          <h3 class="titles">Y tus favoritas por ahora son:</h3>
+          <ul></ul>
+          <h3 class="titles">Resultados de tu búsqueda:</h3>
+          <ul class="js__full-series css__full-series"></ul>
         </div>
-    </section>
-
+      </section>
     </main>
     <script type="text/javascript" src="./js/main.js"></script>
   </body>
