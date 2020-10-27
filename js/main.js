@@ -4,7 +4,7 @@ const typeSerieName = document.querySelector('.js-input');
 const button = document.querySelector('.js-btn');
 let serieSearched = document.querySelector('.js__full-series');
 let favoriteSeries = document.querySelector('.js-favorite__series');
-
+const newBtnexam = document.querySelector('.js-new__btn-exam');
 let series = [];
 
 function getApiSeries() {
@@ -18,7 +18,7 @@ function getApiSeries() {
       series = data;
       paintSeriesImage();
       addListenerFavorites();
-      setLocalStorage();
+      // setLocalStorage();
       getLocalStorage();
     });
 }
@@ -32,6 +32,7 @@ function paintSeriesImage() {
   for (let i = 0; i < series.length; i++) {
     if (series[i].show.image !== null) {
       paintHTML += `<li class="js-series__list full__series" id="${series[i].show.id}"><span>${series[i].show.name}</span>`;
+      paintHTML += `<p>${series[i].show.status}</p>`;
       paintHTML += `<img class="img__color" src="${series[i].show.image.medium}"/>`;
       paintHTML += `</li>`;
     } else {
@@ -62,6 +63,7 @@ function favoriteTv(ev) {
     addFavoritesChosen.splice(favoriteClicked, 1); //sino pongo el 1 me borran todos.
     console.log('entro por aqui y borro el q ya esté');
   }
+  setLocalStorage();
   paintFavoriteSeries();
   addListenerFavorites();
   //   addFavoritesChosen, en consola me muestra que clicked/unclicked
@@ -95,8 +97,15 @@ function paintFavoriteSeries() {
 //para hacer mi array nuevo y guardar los elementos q vienen dados apartir de una respuesta del servidor
 //los tenemos q guardar en el array despues de que la R/ del servidor haya ocurrido
 
+function createNewFavoritesExam() {
+  for (let i = 0; i < addFavoritesChosen.length; i++) {
+    const newWay = addFavoritesChosen[i];
+    console.log(newWay);
+  }
+}
+
 function setLocalStorage() {
-  const jsonData = JSON.stringify(series);
+  const jsonData = JSON.stringify(addFavoritesChosen);
   localStorage.setItem('typeData2', jsonData);
   //   console.log('entra a recoger datos');
 }
@@ -107,3 +116,4 @@ function getLocalStorage() {
   const localDataB = JSON.parse(localDataA);
 }
 button.addEventListener('click', getApiSeries);
+newBtnexam.addEventListener('click', createNewFavoritesExam);
