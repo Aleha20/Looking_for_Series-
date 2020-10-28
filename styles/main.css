@@ -2,7 +2,9 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-color: #ff4800;
+  background-image: url(../imagen/imagenCine.jpg);
+  background-size: auto;
+  height: 100vh;
 }
 .titles {
   margin-left: 20px;
@@ -31,7 +33,6 @@ body {
 }
 .css__full-series {
   width: 90%;
-  background-color: yellow;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
